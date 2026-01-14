@@ -4,9 +4,9 @@ from collections import Counter
 import os
 
 # CSV 파일명 입력 (실제 파일명으로 변경하세요)
-INPUT_FILE = "data/utube/youtube_comments_20260104_220902.csv"
+INPUT_FILE = "data/utube/youtube_comments_20260107_093854.csv"
 
-OUTPUT_DIR = "data/tableau"
+OUTPUT_DIR = "data"
 # CSV 로드
 df = pd.read_csv(INPUT_FILE)
 print(f"📊 전체 댓글 수: {len(df)}")

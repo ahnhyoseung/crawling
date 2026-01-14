@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 plt.rcParams["font.family"] = "Malgun Gothic"
 plt.rcParams["axes.unicode_minus"] = False
 # CSV 로드
-df = pd.read_csv("data/utube_comments_20260102_121947.csv")
+df = pd.read_csv("data/naver_comments_20260108_104841.csv")
 
 print("전체 댓글 수:", len(df))
 
@@ -40,5 +40,5 @@ wc = WordCloud(
 plt.figure(figsize=(12,6))
 plt.imshow(wc)
 plt.axis("off")
-plt.title("🔥 유튜브 좋아요 상위 댓글 워드클라우드")
+plt.title("🔥좋아요 상위 댓글 워드클라우드")
 plt.show()
