@@ -1,18 +1,23 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
-import matplotlib.pyplot as plt
+import os
 
 plt.rcParams["font.family"] = "Malgun Gothic"
 plt.rcParams["axes.unicode_minus"] = False
+
+# 저장 폴더 생성
+OUTPUT_DIR = "anal_data/word_c"
+os.makedirs(OUTPUT_DIR, exist_ok=True)
+
 # CSV 로드
-df = pd.read_csv("data/utube_comments_20260102_121947.csv")
+df = pd.read_csv("../crawler/data_utube/utube_comments_20260102_121947.csv")
 
 print("전체 댓글 수:", len(df))
 
 # 좋아요 상위 N개
 TOP_N = 50
-df_top = df.sort_values("좋아요수", ascending=False).head(TOP_N)
+df_top = df.sort_values("좋아요", ascending=False).head(TOP_N)
 
 # 텍스트 전처리
 words = []
@@ -29,7 +34,7 @@ for text in df_top["댓글"]:
 words = [w for w in words if len(w) > 1 and w not in stopwords]
 text = " ".join(words)
 
-# 워드클라우드
+# 워드클라우드 생성
 wc = WordCloud(
     font_path="C:/Windows/Fonts/malgun.ttf",
     background_color="white",
@@ -37,8 +42,16 @@ wc = WordCloud(
     height=400
 ).generate(text)
 
+# 시각화
 plt.figure(figsize=(12,6))
 plt.imshow(wc)
 plt.axis("off")
 plt.title("🔥 유튜브 좋아요 상위 댓글 워드클라우드")
+
+# 파일 저장
+output_path = os.path.join(OUTPUT_DIR, "wordcloud_top50.png")
+plt.savefig(output_path, dpi=300, bbox_inches='tight')
+print(f"✅ 워드클라우드 저장 완료: {output_path}")
+
+# 화면에 표시
 plt.show()
