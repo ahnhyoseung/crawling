@@ -61,8 +61,10 @@ class YouTubeCommentCrawler:
                 for item in response['items']:
                     # 최상위 댓글만 수집
                     comment = item['snippet']['topLevelComment']['snippet']
+                    # 줄바꿈 문자를 공백으로 변경
+                    clean_text = comment['textOriginal'].replace('\n', ' ')
                     comments.append({
-                        '댓글': comment['textDisplay'],
+                        '댓글': clean_text,
                         '좋아요': comment['likeCount']
                     })
 

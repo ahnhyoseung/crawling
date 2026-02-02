@@ -11,7 +11,11 @@ OUTPUT_DIR = "anal_data/word_c"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # CSV 로드
+<<<<<<< HEAD:analysis/youtube_wordcloud.py
 df = pd.read_csv("../crawler/data_utube/utube_comments_20260102_121947.csv")
+=======
+df = pd.read_csv("data/naver_comments_20260108_104841.csv")
+>>>>>>> 3ea79ba97c3f5655835c9446184f9c1509352eb3:analysis/wordcloud.py
 
 print("전체 댓글 수:", len(df))
 
@@ -46,6 +50,7 @@ wc = WordCloud(
 plt.figure(figsize=(12,6))
 plt.imshow(wc)
 plt.axis("off")
+<<<<<<< HEAD:analysis/youtube_wordcloud.py
 plt.title("🔥 유튜브 좋아요 상위 댓글 워드클라우드")
 
 # 파일 저장
@@ -55,3 +60,7 @@ print(f"✅ 워드클라우드 저장 완료: {output_path}")
 
 # 화면에 표시
 plt.show()
+=======
+plt.title("🔥좋아요 상위 댓글 워드클라우드")
+plt.show()
+>>>>>>> 3ea79ba97c3f5655835c9446184f9c1509352eb3:analysis/wordcloud.py

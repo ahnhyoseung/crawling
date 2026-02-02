@@ -9,6 +9,7 @@ plt.rcParams["font.family"] = "Malgun Gothic"
 plt.rcParams["axes.unicode_minus"] = False
 
 # CSV 파일명 입력 (실제 파일명으로 변경하세요)
+<<<<<<< HEAD
 INPUT_FILE = "crawler/data_utube/youtube_comments_20260105_095113.csv"
 OUTPUT_DIR = "anal_data"
 
@@ -28,6 +29,15 @@ except FileNotFoundError:
 except Exception as e:
     print(f"❌ 파일 로드 중 오류: {e}")
     exit()
+=======
+INPUT_FILE = "data/utube/youtube_comments_20260107_093854.csv"
+
+OUTPUT_DIR = "data"
+# CSV 로드
+df = pd.read_csv(INPUT_FILE)
+print(f"📊 전체 댓글 수: {len(df)}")
+print(f"📊 총 좋아요 수: {df['좋아요'].sum()}")
+>>>>>>> 3ea79ba97c3f5655835c9446184f9c1509352eb3
 
 # ===========================================
 # 1. 기본 통계 정보 추가
